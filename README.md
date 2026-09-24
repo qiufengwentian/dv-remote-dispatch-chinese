@@ -40,4 +40,4 @@ Remote Dispatch 是一个 Derail Valley mod，它读取游戏数据并以网页�
 
 @radostin04 - 面向玩家图标与机车可见性的服务端权限
 
-@domroutley - 上游仓库 [domroutley/dv-remote-dispatch](https://github.com/domroutley/dv-remote-dispatch) 的所有者与维护者，本仓库的来源项目
+@domroutley - [上游仓库](https://github.com/domroutley/dv-remote-dispatch) 的所有者与维护者，本仓库的来源项目
