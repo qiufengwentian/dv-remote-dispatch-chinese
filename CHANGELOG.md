@@ -5,12 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.7.0-zh.1] - 2026-09-23
+## [1.7.0-zh.1] - 2026-09-24
 
 ### Changed
 
 - 本地化：网页前端（`index.html`、`main.js` 的界面文案）与项目文档译为简体中文；C# 后端、UMM 设置界面与日志保持英文（见 `docs/adr/0001-frontend-only-chinese-localization.md`）。
 - 版本号标记为 `1.7.0-zh.1`，以区别上游 `1.7.0`；译名依据见 `CONTEXT.md`。
+- 更新源切换至本仓库：`Repository` 指向本仓库的 `resources/repository.json`，后续中文版更新从本仓库分发，不再跟随上游更新提示。
 
 ## [1.6.1] - 2026-04-04
 
