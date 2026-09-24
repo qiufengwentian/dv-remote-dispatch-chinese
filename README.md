@@ -11,6 +11,8 @@ Remote Dispatch 是一个 Derail Valley mod，它读取游戏数据并以网页�
 
 ## 报告问题
 
+**受理范围**：本仓库是上游项目的简体中文分叉，只处理**网页前端**与**简体中文翻译**导致的问题和翻译错误（界面文案错误、术语不一致、显示异常等）。**原项目本身的 bug 请提交到上游仓库** [domroutley/dv-remote-dispatch](https://github.com/domroutley/dv-remote-dispatch/issues)，本仓库不予跟进。
+
 请附上：
 
 - 你的游戏版本与 UMM 版本
