@@ -28,6 +28,8 @@ Remote Dispatch 是一个 Derail Valley mod，它读取游戏数据并以网页�
 
 原版 [mod](https://www.nexusmods.com/derailvalley/mods/328) 由 [Zeibach](https://www.nexusmods.com/profile/Zeibach) 制作
 
+上游 [Remote Dispatch](https://github.com/domroutley/dv-remote-dispatch) 由 [Dom Routley](https://github.com/domroutley) 开发与维护，本仓库是其简体中文分叉
+
 图标由来自 [Flaticon](https://www.flaticon.com/) 的 [Freepik](https://www.freepik.com) 制作
 
 前端使用 [Leaflet.js](https://leafletjs.com)
