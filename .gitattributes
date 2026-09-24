@@ -35,10 +35,12 @@ Assets/Unity/*.asset -binary
 .gitignore text eol=lf
 
 # --- JSON/XML configs: Text, LF preferred but don't aggressively convert binaries ---
-*.json -binary  # Keep original formatting for config files
-*.xml -binary   # Preserve XML structure
+# Keep original formatting for JSON config files / preserve XML structure
+*.json -binary
+*.xml -binary
 
 # --- PowerShell Scripts: Windows allows both, prefer consistent formatting ---
-*.ps1 text eol=nfc  # Natural (can be LF or CRLF)
+# 入库归一为 LF；检出跟随 core.autocrlf（git 仅接受 eol=lf|crlf，原 eol=nfc 非法）
+*.ps1 text
 
 # ============================================================
