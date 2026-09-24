@@ -1,99 +1,125 @@
 # AGENTS.md
 
-## Repository Layout
-This is a C# UnityModManager mod for Derail Valley that provides remote dispatch capabilities. The codebase is structured as follows:
-- `RemoteDispatch/` - Main mod source code
-- `RemoteDispatch.Signals/` - Signals integration module 
-- `RemoteDispatch.Tests/` - Unit tests
-- `RemoteDispatch.Signals.Tests/` - Signals tests
-- `build/` - Build output directory
-- `dist/` - Distribution package directory
-- `frontend/` - Embedded web assets (HTML, JS, CSS)
+## 语言要求 / Language Requirements
 
-## File Descriptions
+本项目（dv-remote-dispatch-chinese）要求以简体中文翻译呈现：
+- 项目文档（README.md、CHANGELOG.md、docs/ 下说明）使用简体中文。
+- 代码标识符（类名、方法名、变量名、命名空间）保持英文，符合 C# 惯例；代码注释可用中文。
+- 新增代码中的用户可见字符串默认使用简体中文；确需保留英文专有名词（如游戏术语、API 名称）时保留原文。
+- 提交信息（commit message）与 issue 标题/描述建议使用中文。
 
-### Main Mod Files
-- `Main.cs` - Entry point and mod lifecycle management
-- `Settings.cs` - Configuration and permissions handling  
-- `HttpServer.cs` - HTTP endpoint implementation and request handlers
-- `CarData.cs` - Car/locomotive data processing
-- `PlayerData.cs` - Player blip data processing
-- `RailTracks.cs` - Track and junction data processing
+## 仓库布局 / Repository Layout
 
-### Signals Module
-- `Bootstrap.cs` - Signals integration initialization
-- `SignalsBridge.cs` - Communication bridge with Signals API
-- `LoggingReturn.cs` - Logging callbacks for signals module
+本项目是一个针对 Derail Valley 的 C# UnityModManager 模组，提供远程调度（remote dispatch）能力。代码结构如下：
+- `RemoteDispatch/` - 主模组源代码
+- `RemoteDispatch.Signals/` - Signals 集成模块
+- `RemoteDispatch.Tests/` - 单元测试
+- `RemoteDispatch.Signals.Tests/` - Signals 测试
+- `build/` - 构建输出目录
+- `dist/` - 发行打包目录
+- `frontend/` - 内嵌的 Web 静态资源（HTML、JS、CSS）
 
-### Test Files
-- `UnitTest1.cs` - Basic unit test placeholder
-- `Bootstrap.cs` - Signals tests (missing in current structure)
+## 文件说明 / File Descriptions
 
-## Code Flow
-The mod initializes through Main.Load(), then patches game systems via Harmony. On enable, it starts HTTP server and data updaters. Data is served through HTTP endpoints:
-- `/car` - Car/locomotive data
-- `/player` - Player blip data  
-- `/track` - Track junction data
-- `/signals` - Signal data (when enabled)
-- `/updates` - Real-time data updates
+### 主模组文件
+- `Main.cs` - 入口点与模组生命周期管理
+- `Settings.cs` - 配置与权限处理
+- `HttpServer.cs` - HTTP 端点实现与请求处理器
+- `CarData.cs` - 车辆/机车数据处理
+- `PlayerData.cs` - 玩家光点（blip）数据处理
+- `RailTracks.cs` - 轨道与道岔数据处理
 
-## Build/Lint/Test Commands
+### Signals 模块
+- `Bootstrap.cs` - Signals 集成初始化
+- `SignalsBridge.cs` - 与 Signals API 的通信桥接
+- `LoggingReturn.cs` - Signals 模块的日志回调
+
+### 测试文件
+- `UnitTest1.cs` - 基础单元测试占位
+- `Bootstrap.cs` - Signals 测试（当前结构中缺失）
+
+## 代码流程 / Code Flow
+
+模组经由 Main.Load() 初始化，随后通过 Harmony 对游戏系统打补丁。启用时启动 HTTP 服务器与数据更新器。数据通过以下 HTTP 端点提供：
+- `/car` - 车辆/机车数据
+- `/player` - 玩家光点数据
+- `/track` - 轨道道岔数据
+- `/signals` - 信号数据（启用时）
+- `/updates` - 实时数据更新
+
+## 构建/检查/测试命令 / Build/Lint/Test Commands
+
 ```bash
-# Build the solution
+# 构建解决方案
 dotnet build RemoteDispatch.slnx
 
-# Run tests 
+# 运行测试
 dotnet test RemoteDispatch.Tests/RemoteDispatch.Tests.csproj
 
-# Single test execution  
+# 执行单个测试
 dotnet test RemoteDispatch.Tests/RemoteDispatch.Tests.csproj --filter "Test1"
 
-# Package for release
+# 打包发布
 .\package.ps1 -Configuration Release
 
-# Deploy for development  
+# 开发部署
 .\package.ps1 -Configuration Debug -DVPath "C:\path\to\derailvalley"
 ```
 
-## Code Style Guidelines
+## 代码风格指南 / Code Style Guidelines
 
-### Imports
-- Group using statements with standard libraries first, then third-party, then project-specific
-- Use full namespaces for clarity (no 'using static' except where explicitly needed)
-- Organize imports alphabetically within groups
+### 导入 / Imports
+- using 语句按分组排列：先标准库，再第三方，最后项目内
+- 使用完整命名空间以保持清晰（除非明确需要，否则不使用 'using static'）
+- 各分组内按字母顺序排列
 
-### Formatting
-- Use 4-space indentation (no tabs)
-- Follow C# naming conventions (PascalCase for methods and properties, camelCase for parameters)
-- Place opening braces on same line as control statements
-- Use blank lines to separate logical sections
+### 格式化 / Formatting
+- 使用 4 空格缩进（不用制表符）
+- 遵循 C# 命名约定（方法与属性用 PascalCase，参数用 camelCase）
+- 控制语句的左大括号与语句置于同一行
+- 逻辑段落之间使用空行分隔
 
-### Types
-- Prefer readonly fields over constants when possible  
-- Use var for local variables with explicit types
-- Prefer explicit null checking over null-conditional operators where clarity is preferred
-- Use nullable reference types (enabled in project)
+### 类型 / Types
+- 尽可能使用 readonly 字段而非常量
+- 局部变量使用 var 并带显式类型
+- 当清晰性优先时，使用显式 null 检查而非 null 条件运算符
+- 使用可空引用类型（项目中已启用）
 
-### Naming Conventions
-- Classes: PascalCase
-- Methods: PascalCase
-- Variables: camelCase  
-- Constants: PascalCase
-- Private fields: _camelCase
+### 命名约定 / Naming Conventions
+- 类：PascalCase
+- 方法：PascalCase
+- 变量：camelCase
+- 常量：PascalCase
+- 私有字段：_camelCase
 
-### Error Handling
-- Use try/catch blocks around potentially failing operations
-- Log errors with descriptive messages including stack traces when appropriate
-- Prefer specific exception handling over generic catch-all blocks
-- Handle null values gracefully with explicit checks
+### 错误处理 / Error Handling
+- 对可能失败的操作使用 try/catch 块
+- 记录错误时附带描述性信息，适当时包含堆栈跟踪
+- 优先使用具体的异常处理而非笼统的 catch-all
+- 优雅处理 null 值，使用显式检查
 
-### Documentation
-- Document public methods with XML comments
-- Use TODO comments for incomplete features
-- Keep inline comments brief and focused
+### 文档 / Documentation
+- 公共方法使用 XML 注释记录
+- 未完成功能使用 TODO 注释
+- 行内注释保持简短且聚焦
 
-### Syntax Safety Checklist
-- **NEVER** use replaceAll on multi-line spans without precise boundary matching
-- Always verify there are no duplicate code blocks after editing
-- When replacing text, include enough surrounding context to make it unique
-- After any edit, read the affected file to confirm syntax integrity
+### 语法安全清单 / Syntax Safety Checklist
+- **绝不要**在多行跨度上使用 replaceAll 而不做精确边界匹配
+- 编辑后始终确认没有产生重复代码块
+- 替换文本时，包含足够的上下文使其唯一
+- 每次编辑后，读取受影响的文件以确认语法完整性
+
+## Agent skills
+
+### Issue tracker
+
+Issue（工作项）通过 `gh` CLI 跟踪在 GitHub Issues 中。详见 `docs/agents/issue-tracker.md`。
+
+### Triage labels
+
+使用默认的五个规范 triage 标签（`needs-triage`、`needs-info`、`ready-for-agent`、`ready-for-human`、`wontfix`）。详见 `docs/agents/triage-labels.md`。
+
+### Domain docs
+
+单上下文：仓库根目录的 `CONTEXT.md` + `docs/adr/`。详见 `docs/agents/domain.md`。
+
