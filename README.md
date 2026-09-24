@@ -1,37 +1,37 @@
-# Remote Dispatch
+# Remote Dispatch（远程调度）
 
-## Overview
+## 概述
 
-Remote Dispatch is a mod that reads data from Derail Valley and makes this available as a webpage on your machine.
+Remote Dispatch 是一个 Derail Valley mod，它读取游戏数据并以网页形式呈现在你的机器上。
 
-This allows for:
-- Remote (as in someone other than the player/s) dispatching trains (as the name would imply)
-- Planning your route on a second screen from the main game
-- Multiplayer dispatching where a dedicated (or multiple dedicated) dispatchers monitor and coordinate multiple trains at once on the same map. This will obviously require the [multiplayer mod for Derail Valley](https://www.nexusmods.com/derailvalley/mods/1070).
+这支持：
+- 远程（即由玩家以外的人）指挥列车——顾名思义
+- 在副屏上规划行车路线，主屏照常游戏
+- 多人指挥场景：一名（或多名）专职调度员在同一张地图上同时监视并协调多列列车。这当然需要 [Derail Valley 多人 mod](https://www.nexusmods.com/derailvalley/mods/1070)。
 
-## Reporting issues
+## 报告问题
 
-Please include:
+请附上：
 
-- Your game version and UMM version
-- The mod version
-- The full exception from the UMM log (`UnityModManager/Logs/`) if applicable
-- Steps to reproduce
+- 你的游戏版本与 UMM 版本
+- mod 版本
+- 如适用，UMM 日志（`UnityModManager/Logs/`）中的完整异常信息
+- 复现步骤
 
-## Contributing
+## 参与贡献
 
-Please do feel free to contribute, we have many ideas and not enough people to do them all.
+欢迎贡献——我们有很多想法，但人手不够。
 
-See [Contributing](.github/CONTRIBUTING.md)
+参见 [贡献指南](.github/CONTRIBUTING.md)
 
-## Credits
+## 致谢
 
-Original [mod](https://www.nexusmods.com/derailvalley/mods/328) by [Zeibach](https://www.nexusmods.com/profile/Zeibach)
+原版 [mod](https://www.nexusmods.com/derailvalley/mods/328) 由 [Zeibach](https://www.nexusmods.com/profile/Zeibach) 制作
 
-Icons made by [Freepik](https://www.freepik.com) from [Flaticon](https://www.flaticon.com/).
+图标由来自 [Flaticon](https://www.flaticon.com/) 的 [Freepik](https://www.freepik.com) 制作
 
-Frontend uses [Leaflet.js](https://leafletjs.com)
+前端使用 [Leaflet.js](https://leafletjs.com)
 
-# Contributors
+# 贡献者
 
-@radostin04 - Server based permission for player icons and locomotive visibility
+@radostin04 - 面向玩家图标与机车可见性的服务端权限

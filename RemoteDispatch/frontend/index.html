@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Derail Valley Remote Dispatch Console</title>
+	<title>Derail Valley 远程调度控制台</title>
 	<link rel="icon" href="res/icon.svg">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" integrity="sha256-BPfK9M5v34c2XP6p0cxVz1mUQLst0gTLk0mlc7kuodA=" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-sidebar-v2@3.2.3/css/leaflet-sidebar.min.css" integrity="sha256-10dwwxs/pdWEYoC56aJvmY3kbMMa9/3uSWWNkGcrGq8=" crossorigin="anonymous">
@@ -17,53 +17,53 @@
 	<div id="sidebar" class="leaflet-sidebar collapsed">
 		<div class="leaflet-sidebar-tabs">
 			<ul role="tablist">
-				<li><a href="#carsTab" role="tab"><i class="fas fa-train" title="Cars"></i></a></li>
-				<li><a href="#locoFilterTab" role="tab"><i class="fas fa-eye" title="Loco select"></i></a></li>
-				<li><a href="#jobsTab" role="tab"><i class="fas fa-clipboard-list" title="Jobs"></i></a></li>
-				<li><a href="#locoControlTab" role="tab"><i class="fas fa-gamepad" title="Loco Control"></i></a></li>
-				<li><a href="#settingsTab" role="tab"><i class="fas fa-cog" title="Settings"></i></a></li>
-				<li><a href="#signals-sidebar" role="tab"><i class="fas fa-traffic-light" title="Signals"></i></a></li>
+				<li><a href="#carsTab" role="tab"><i class="fas fa-train" title="车辆"></i></a></li>
+				<li><a href="#locoFilterTab" role="tab"><i class="fas fa-eye" title="选择机车"></i></a></li>
+				<li><a href="#jobsTab" role="tab"><i class="fas fa-clipboard-list" title="任务"></i></a></li>
+				<li><a href="#locoControlTab" role="tab"><i class="fas fa-gamepad" title="机车操控"></i></a></li>
+				<li><a href="#settingsTab" role="tab"><i class="fas fa-cog" title="设置"></i></a></li>
+				<li><a href="#signals-sidebar" role="tab"><i class="fas fa-traffic-light" title="信号机"></i></a></li>
 			</ul>
 		</div>
 		<div class="leaflet-sidebar-content">
 			<div class="leaflet-sidebar-pane" id="carsTab">
 				<h1 class="leaflet-sidebar-header">
-					Rolling stock
+					机车车辆
 					<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
 				</h1>
 				<table id="carList">
 					<thead>
-						<tr><th>ID</th><th>Job</th><th>Dest</th></tr>
+						<tr><th>ID</th><th>任务</th><th>目的地</th></tr>
 					</thead>
 					<tbody id="carListBody"></tbody>
 				</table>
 			</div>
 			<div class="leaflet-sidebar-pane" id="locoFilterTab">
 				<h1 class="leaflet-sidebar-header">
-					Loco visibility
+					机车可见性
 					<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
 				</h1>
 				<table id="locoList">
 					<thead>
-						<tr><th>ID</th><th>Highlight</th></tr>
+						<tr><th>ID</th><th>高亮</th></tr>
 					</thead>
 					<tbody id="locoListBody"></tbody>
 				</table>
 			</div>
 			<div class="leaflet-sidebar-pane" id="jobsTab">
 				<h1 class="leaflet-sidebar-header">
-					Jobs
+					任务
 					<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
 				</h1>
-				<input id="jobSearchText" type="text" placeholder="Search...">
-				<label>active only<input id="jobActiveOnly" type="checkbox"></label>
+				<input id="jobSearchText" type="text" placeholder="搜索…">
+				<label>仅进行中<input id="jobActiveOnly" type="checkbox"></label>
 				<table id="jobList">
 					<tbody id="jobListBody"></tbody>
 				</table>
 			</div>
 			<div class="leaflet-sidebar-pane" id="locoControlTab">
 				<h1 class="leaflet-sidebar-header">
-					Loco control
+					机车操控
 					<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
 				</h1>
 				<div id="locoControlIndicators">
@@ -74,34 +74,34 @@
 				</div>
 				<div id="locoControlControls">
 					<div>
-						<label for="locoControlTrainBrakeInput">Train Brk</label>
+						<label for="locoControlTrainBrakeInput">列车制动</label>
 						<input id="locoControlTrainBrakeInput" type="range">
 					</div>
 					<div>
-						<label for="locoControlIndependentBrakeInput">Indep Brk</label>
+						<label for="locoControlIndependentBrakeInput">独立制动</label>
 						<input id="locoControlIndependentBrakeInput" type="range">
 					</div>
 					<div>
-						<label>Reverser</label>
-						<span id="locoControlReverserReverseButton" class="locoControlButton" locoControlCommand="reverse"><i class="far fa-play-circle fa-flip-horizontal" title="Reverse"></i></span>
-						<span id="locoControlReverserForwardButton" class="locoControlButton" locoControlCommand="forward"><i class="far fa-play-circle" title="Forward"></i></span>
+						<label>换向</label>
+						<span id="locoControlReverserReverseButton" class="locoControlButton" locoControlCommand="reverse"><i class="far fa-play-circle fa-flip-horizontal" title="后退"></i></span>
+						<span id="locoControlReverserForwardButton" class="locoControlButton" locoControlCommand="forward"><i class="far fa-play-circle" title="前进"></i></span>
 					</div>
 					<div>
-						<label for="locoControlThrottleInput">Throttle</label>
+						<label for="locoControlThrottleInput">油门</label>
 						<input id="locoControlThrottleInput" type="range">
 					</div>
 					<div>
-						<button id="locoControlCoupleButton">Couple</button>
+						<button id="locoControlCoupleButton">连挂</button>
 					</div>
 					<div>
-						<button id="locoControlUncoupleButton">Uncouple</button>
+						<button id="locoControlUncoupleButton">摘解</button>
 						<select id="locoControlUncoupleSelect"></select>
 					</div>
 				</div>
 			</div>
 			<div class="leaflet-sidebar-pane" id="signals-sidebar">
 				<h1 class="leaflet-sidebar-header">
-					Signals
+					信号机
 					<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
 				</h1>
 				<div id="signals-sidebar-content">
@@ -110,36 +110,36 @@
 			</div>
 			<div class="leaflet-sidebar-pane" id="settingsTab">
 				<h1 class="leaflet-sidebar-header">
-					Settings
+					设置
 					<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
 				</h1>
 				<table>
 					<tr>
-						<th><label for="themeDropdown">Theme</label></th>
+						<th><label for="themeDropdown">主题</label></th>
 						<td>
 							<select name="theme" id="themeDropdown">
-								<option value="dark">Dark</option>
-								<option value="light">Light</option>
+								<option value="dark">深色</option>
+								<option value="light">浅色</option>
 							</select>
 						</td>
 					</tr>
 					<tr>
-						<th><label for="carColorDropdown">Car color</label></th>
+						<th><label for="carColorDropdown">车辆颜色</label></th>
 						<td>
 							<select name="carColor" id="carColorDropdown">
-								<option value="jobId">by job ID</option>
-								<option value="jobType">by job type</option>
-								<option value="destination">by destination</option>
-								<option value="carType">by car type</option>
+								<option value="jobId">按任务 ID</option>
+								<option value="jobType">按任务类型</option>
+								<option value="destination">按目的地</option>
+								<option value="carType">按车种</option>
 							</select>
 						</td>
 					</tr>
 					<tr>
-						<th><label for="playerScalingCheckbox">Player icon scaling</label></th>
+						<th><label for="playerScalingCheckbox">玩家图标缩放</label></th>
 						<td><input type="checkbox" id="playerScalingCheckbox" checked></td>
 					</tr>
 					<tr>
-						<th><label for="playerNameCheckbox">Show player names</label></th>
+						<th><label for="playerNameCheckbox">显示玩家名</label></th>
 						<td><input type="checkbox" id="playerNameCheckbox" checked></td>
 					</tr>
 				</table>
@@ -148,9 +148,10 @@
 	</div>
 	<div id="map" class="dark" style="height:100vh"></div>
 	<div id="search">
-		<input id="searchInput" type="text" placeholder="Go to…" autocomplete="off">
+		<input id="searchInput" type="text" placeholder="跳转到…" autocomplete="off">
 		<ul id="searchResults"></ul>
 	</div>
 	<script src="res/main.js"></script>
 </body>
 </html>
+

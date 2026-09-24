@@ -22,7 +22,7 @@ const zoomHome = new L.Control.ZoomHome({
 	position: 'topleft',
 	zoomInText: '<i class="fas fa-search-plus"></i>',
 	zoomHomeText: '<i class="fas fa-user"></i>',
-	zoomHomeTitle: 'Zoom to player(s)',
+	zoomHomeTitle: '缩放到玩家',
 	zoomOutText: '<i class="fas fa-search-minus"></i>',
 }).addTo(map);
 
@@ -642,11 +642,11 @@ function buildSignalPopup(signalId, signalType) {
 	const isManual = state.mode === 'Manual';
 	// Get valid aspects
 	var validTypeAspects = [
-		{ "aspect": "S2", "name": "Clear" },
-		{ "aspect": "S4", "name": "Expect Caution" },
-		{ "aspect": "S6", "name": "Caution" },
-		{ "aspect": "S1", "name": "Stop" },
-		{ "aspect": "S1c", "name": "Stop, train crossing" }
+		{ "aspect": "S2", "name": "允许" },
+		{ "aspect": "S4", "name": "预告注意" },
+		{ "aspect": "S6", "name": "注意" },
+		{ "aspect": "S1", "name": "停车" },
+		{ "aspect": "S1c", "name": "停车（列车通过中）" }
 	]
 
 	const container = document.createElement('div');
@@ -654,14 +654,14 @@ function buildSignalPopup(signalId, signalType) {
 	container.innerHTML = `
 		<strong style="font-size:1.1em">${signalId}</strong>
 			<div style="margin:6px 0">
-				Mode: <strong id="sig-mode-label-${makeSafeSignalId(signalId)}">${state.mode}</strong>
+				模式：<strong id="sig-mode-label-${makeSafeSignalId(signalId)}">${state.mode}</strong>
 			</div>
 			<label style="display:flex;align-items:center;gap:6px;margin-bottom:10px;cursor:pointer">
 				<input type="checkbox" id="sig-manual-${makeSafeSignalId(signalId)}" ${isManual ? 'checked' : ''}>
-				Manual control
+				手动控制
 			</label>
 			<div id="sig-aspect-row-${makeSafeSignalId(signalId)}" style="display:${isManual ? 'block' : 'none'}">
-				<div style="margin-bottom:4px">Set aspect:</div>
+				<div style="margin-bottom:4px">设置显示：</div>
 				<select id="sig-aspect-select-${makeSafeSignalId(signalId)}" style="width:100%;margin-bottom:8px;max-height:120px;overflow-y:auto">
 					${validTypeAspects.map(a =>
 		`<option value="${a.aspect}" ${a.aspect === state.aspect ? 'selected' : ''}>${a.name}</option>`
@@ -669,7 +669,7 @@ function buildSignalPopup(signalId, signalType) {
 				</select>
 				<button id="sig-apply-${makeSafeSignalId(signalId)}"
 					style="width:100%;padding:4px;background:#2a6;color:#fff;border:none;border-radius:3px;cursor:pointer">
-					Apply aspect
+					应用显示
 				</button>
 			</div>
 			<div id="sig-status-${makeSafeSignalId(signalId)}" style="margin-top:6px;font-size:0.85em;color:gray"></div>
@@ -692,9 +692,9 @@ function buildSignalPopup(signalId, signalType) {
 						if (modeLabel) modeLabel.textContent = newMode;
 						const aspectRow = container.querySelector(`#sig-aspect-row-${makeSafeSignalId(signalId)}`);
 						if (aspectRow) aspectRow.style.display = e.target.checked ? 'block' : 'none';
-						setSignalStatus(signalId, container, `Mode set to ${newMode}.`);
+						setSignalStatus(signalId, container, `模式已切换为 ${newMode}。`);
 					} else {
-						setSignalStatus(signalId, container, 'Failed to set mode.', true);
+						setSignalStatus(signalId, container, '模式设置失败。', true);
 						e.target.checked = !e.target.checked; // revert on failure
 					}
 				});
@@ -710,7 +710,7 @@ function buildSignalPopup(signalId, signalType) {
 			postSignalControl(signalId, { aspect })
 				.then(ok => {
 					setSignalStatus(signalId, container,
-						ok ? `Aspect set to ${aspect}.` : 'Failed to set aspect.', !ok);
+						ok ? `信号显示已设为 ${aspect}。` : '信号显示设置失败。', !ok);
 					if (ok) {
 						const entry = signalMarkers.get(signalId);
 						if (entry) {
@@ -1507,7 +1507,7 @@ function buildSignalsSidebar(installed) {
 	if (!content) return;
 
 	if (!installed) {
-		content.innerHTML = '<p style="margin:12px 16px;color:#888;font-style:italic;">Signals mod not installed.</p>';
+		content.innerHTML = '<p style="margin:12px 16px;color:#888;font-style:italic;">未安装 Signals 模组。</p>';
 		return;
 	}
 
@@ -1527,15 +1527,15 @@ function buildSignalsSidebar(installed) {
 		<div class="sig-filter-section">
 			<label class="sig-filter-label sig-filter-master">
 				<input type="checkbox" id="sig-filter-show" checked>
-				<span>Show all signals</span>
+				<span>显示全部信号机</span>
 			</label>
 		</div>
 		<div id="sig-filter-sub" class="sig-filter-section">
 			<label class="sig-filter-label">
 				<input type="checkbox" id="sig-filter-distant" checked>
-				<span>Show Distant signals</span>
+				<span>显示远方信号机</span>
 			</label>
-			<div class="sig-filter-divider">Yards</div>
+			<div class="sig-filter-divider">车场</div>
 			<div class="sig-filter-yard-grid">
 				${yardCheckboxes}
 			</div>
