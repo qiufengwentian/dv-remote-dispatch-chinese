@@ -7,7 +7,7 @@ Remote Dispatch 是一个 Derail Valley mod，它读取游戏数据并以网页�
 这支持：
 - 远程（即由玩家以外的人）指挥列车——顾名思义
 - 在副屏上规划行车路线，主屏照常游戏
-- 多人指挥场景：一名（或多名）专职调度员在同一张地图上同时监视并协调多列列车。这当然需要 [Derail Valley 多人 mod](https://www.nexusmods.com/derailvalley/mods/1070)。
+- 多人指挥场景：一名（或多名）专职调度员在同一张地图上同时监视并协调多列列车。这当然需要 [Derail Valley MulitPlayer mod](https://www.nexusmods.com/derailvalley/mods/1070)。
 
 ## 报告问题
 
@@ -40,6 +40,6 @@ Remote Dispatch 是一个 Derail Valley mod，它读取游戏数据并以网页�
 
 # 贡献者
 
-@radostin04 - 面向玩家图标与机车可见性的服务端权限
+[@radostin04](https://www.nexusmods.com/profile/Zeibach?gameId=2750) - 面向玩家图标与机车可见性的服务端权限
 
-@domroutley - [上游仓库](https://github.com/domroutley/dv-remote-dispatch) 的所有者与维护者，本仓库的来源项目
+[@domroutley](https://github.com/domroutley/) - [上游仓库](https://github.com/domroutley/dv-remote-dispatch) 的所有者与维护者，本仓库的来源项目
